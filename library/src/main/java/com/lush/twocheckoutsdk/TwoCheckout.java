@@ -40,8 +40,9 @@ public class TwoCheckout
 		mWebview.loadUrl("file:///android_asset/2checkout.html");
 	}
 
-	public void serialise(PaymentCardData card)
+	public void serialise(PaymentCardData card, OnTokenEncodedCallback callback)
 	{
+		this.callback = callback;
 		card.setPublishableKey(publishableKey);
 		card.setSellerId(sellerId);
 		String cardData = new Gson().toJson(card);
@@ -57,12 +58,15 @@ public class TwoCheckout
 	@JavascriptInterface
 	public void on2CheckoutTokenSuccess(String token)
 	{
-
+		if (callback != null)
+		{
+			callback.onTokenCreated(token);
+		}
 	}
 
 	@JavascriptInterface
 	public void on2CheckoutTokenError(String error)
 	{
-
+		// TODO Don't fail silently
 	}
 }
