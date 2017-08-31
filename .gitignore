@@ -45,13 +45,13 @@ proguard/
 captures/
 
 # Intellij
-*.iml
+# *.iml
 
 # Keystore files
 *.jks
 
 # External native build folder generated in Android Studio 2.2 and later
-.externalNativeBuild
+# .externalNativeBuild
 
 ### Android Patch ###
 gen-external-apklibs
@@ -86,7 +86,7 @@ fabric.properties
 
 
 ### Gradle ###
-.gradle
+# .gradle
 /build/
 
 # Ignore Gradle GUI config
